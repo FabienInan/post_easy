@@ -1,2 +1,4 @@
 /* includes the material theme */
-@import '~@angular/material/core/theming/prebuilt/deeppurple-amber.css';
+@import '~@angular/material/core/theming/prebuilt/indigo-pink.css';
+/* includes shared css */
+@import 'css/main.css'

@@ -6,10 +6,18 @@ import { MaterialModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AppComponent } from './app.component';
+import { ToolbarComponent } from './toolbar/toolbar.component';
+import { PictureCardComponent } from './picture-card/picture-card.component';
+import { PhotoWallComponent } from './photowall/photowall.component';
+import { FiltersComponent } from './filters/filters.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ToolbarComponent,
+    PictureCardComponent,
+    PhotoWallComponent,
+    FiltersComponent
   ],
   imports: [
     BrowserModule,
@@ -18,7 +26,6 @@ import { AppComponent } from './app.component';
     MaterialModule,
     FlexLayoutModule
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
