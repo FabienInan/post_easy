@@ -7,15 +7,13 @@ import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 import { NgModule } from '@angular/core';
 import { PhotoWallComponent } from './photowall/photowall.component';
-import { PictureCardComponent } from './picture-card/picture-card.component';
-import { PictureCardV2Component } from './picture-card/picture-card-v2.component';
+import { PictureCardV2Component } from './picture-card-v2/picture-card-v2.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ToolbarComponent,
-    PictureCardComponent,
     PictureCardV2Component,
     PhotoWallComponent,
     FiltersComponent
