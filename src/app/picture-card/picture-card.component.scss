@@ -1,0 +1,49 @@
+@import '../../css/theme.scss';
+
+.center-cropped {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.center-cropped:after {
+  content: "";
+  display: block;
+  padding-bottom: 100%;
+}
+@media only screen and (min-width: 800px) {
+  .card-content-picture {
+    margin-bottom: 0;
+    margin-top: 20px;
+  }
+
+  .card {
+    margin: 8px;
+  }
+}
+@media only screen and (max-width: 800px) {
+  .hide-mobile {
+    display: none;
+  }
+
+  .card {
+    margin: 2px;
+  }
+}
+
+.chip-data-picture {
+  margin: -1px;
+  font-size: 16px !important;
+  background-color: mat-color($mat-orange, 800)!important;
+}
+
+.date-picture {
+  position: absolute;
+  background-color: mat-color($mat-orange, 800);
+  color: white;
+  font-weight: 500;
+  padding: 6px;
+  border-radius: 15px;
+  margin: 2px;
+  text-align: right;
+}

@@ -1,4 +1,5 @@
-import { Component, Input} from '@angular/core';
+import { Component, Input } from '@angular/core';
+
 import { MdSidenav } from '@angular/material';
 
 @Component({
@@ -10,14 +11,22 @@ import { MdSidenav } from '@angular/material';
     </button>
     <span>FSDU</span>
     <span class="spacer"></span>
-    <button md-icon-button>
-      <md-icon>account_circle</md-icon>
-    </button>
+    <img class="avatar" src="../../assets/avatar.jpeg"/>
+    <span>Bonjour Fabien</span>
     <button md-icon-button>
       <md-icon>power_settings_new</md-icon>
     </button>
   </md-toolbar>
-`
+`,
+  styles: [`
+    .avatar{
+      height: 48px;
+      width: 48px;
+      border-radius: 48px;
+      padding:5px;
+    }
+  `
+  ]
 })
 export class ToolbarComponent {
   @Input()

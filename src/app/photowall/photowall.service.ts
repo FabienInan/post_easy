@@ -9,121 +9,261 @@ export class PhotoWallService {
         url: '../../assets/1.jpeg',
         storechain: 'Auchan',
         country: 'France',
-        province: 'Ile de France'
+        province: 'Languedoc Roussillon',
+        brand: 'Evian',
+        category: 'Boissons',
+        type: 'Vitrine',
+        event: 'Noel',
+        retailer: 'Auchan',
+        old: '3',
+        address: '71 rue du Faubourg Saint Martin 75011 Paris'
       },
       {
         url: '../../assets/2.jpeg',
         storechain: 'Auchan',
         country: 'France',
-        province: 'Ile de France'
+        province: 'Ile de France',
+        brand: 'Evian',
+        category: 'Boissons',
+        type: 'Vitrine',
+        event: 'Noel',
+        retailer: 'Auchan',
+        old: '3',
+        address: '71 rue du Faubourg Saint Martin 75011 Paris'
       },
       {
         url: '../../assets/3.jpeg',
         storechain: 'Auchan',
         country: 'France',
-        province: 'Ile de France'
+        province: 'Ile de France',
+        brand: 'Evian',
+        category: 'Boissons',
+        type: 'Vitrine',
+        event: 'Noel',
+        retailer: 'Auchan',
+        old: '3',
+        address: '71 rue du Faubourg Saint Martin 75011 Paris'
       },
       {
         url: '../../assets/4.jpeg',
         storechain: 'Auchan',
         country: 'France',
-        province: 'Ile de France'
+        province: 'Ile de France',
+        brand: 'Evian',
+        category: 'Boissons',
+        type: 'Vitrine',
+        event: 'Noel',
+        retailer: 'Auchan',
+        old: '3',
+        address: '71 rue du Faubourg Saint Martin 75011 Paris'
       },
       {
         url: '../../assets/5.jpeg',
         storechain: 'Auchan',
         country: 'France',
-        province: 'Ile de France'
+        province: 'Ile de France',
+        brand: 'Evian',
+        category: 'Boissons',
+        type: 'Vitrine',
+        event: 'Noel',
+        retailer: 'Auchan',
+        old: '3',
+        address: '71 rue du Faubourg Saint Martin 75011 Paris'
       },
       {
         url: '../../assets/6.jpeg',
         storechain: 'Auchan',
         country: 'France',
-        province: 'Ile de France'
+        province: 'Ile de France',
+        brand: 'Evian',
+        category: 'Boissons',
+        type: 'Vitrine',
+        event: 'Noel',
+        retailer: 'Auchan',
+        old: '3',
+        address: '71 rue du Faubourg Saint Martin 75011 Paris'
       },
       {
         url: '../../assets/7.jpeg',
         storechain: 'Auchan',
         country: 'France',
-        province: 'Ile de France'
+        province: 'Ile de France',
+        brand: 'Evian',
+        category: 'Boissons',
+        type: 'Vitrine',
+        event: 'Noel',
+        retailer: 'Auchan',
+        old: '3',
+        address: '71 rue du Faubourg Saint Martin 75011 Paris'
       },
       {
         url: '../../assets/8.jpeg',
         storechain: 'Auchan',
         country: 'France',
-        province: 'Ile de France'
+        province: 'Ile de France',
+        brand: 'Evian',
+        category: 'Boissons',
+        type: 'Vitrine',
+        event: 'Noel',
+        retailer: 'Auchan',
+        old: '3',
+        address: '71 rue du Faubourg Saint Martin 75011 Paris'
       },
       {
         url: '../../assets/9.jpeg',
         storechain: 'Auchan',
         country: 'France',
-        province: 'Ile de France'
+        province: 'Ile de France',
+        brand: 'Evian',
+        category: 'Boissons',
+        type: 'Vitrine',
+        event: 'Noel',
+        retailer: 'Auchan',
+        old: '3',
+        address: '71 rue du Faubourg Saint Martin 75011 Paris'
       },
       {
         url: '../../assets/10.jpeg',
         storechain: 'Auchan',
         country: 'France',
-        province: 'Ile de France'
+        province: 'Ile de France',
+        brand: 'Evian',
+        category: 'Boissons',
+        type: 'Vitrine',
+        event: 'Noel',
+        retailer: 'Auchan',
+        old: '3',
+        address: '71 rue du Faubourg Saint Martin 75011 Paris'
       },
       {
         url: '../../assets/11.jpeg',
         storechain: 'Auchan',
         country: 'France',
-        province: 'Ile de France'
+        province: 'Ile de France',
+        brand: 'Evian',
+        category: 'Boissons',
+        type: 'Vitrine',
+        event: 'Noel',
+        retailer: 'Auchan',
+        old: '3',
+        address: '71 rue du Faubourg Saint Martin 75011 Paris'
       },
       {
         url: '../../assets/12.jpeg',
         storechain: 'Auchan',
         country: 'France',
-        province: 'Ile de France'
+        province: 'Ile de France',
+        brand: 'Evian',
+        category: 'Boissons',
+        type: 'Vitrine',
+        event: 'Noel',
+        retailer: 'Auchan',
+        old: '3',
+        address: '71 rue du Faubourg Saint Martin 75011 Paris'
       },
       {
         url: '../../assets/13.jpeg',
         storechain: 'Auchan',
         country: 'France',
-        province: 'Ile de France'
+        province: 'Ile de France',
+        brand: 'Evian',
+        category: 'Boissons',
+        type: 'Vitrine',
+        event: 'Noel',
+        retailer: 'Auchan',
+        old: '3',
+        address: '71 rue du Faubourg Saint Martin 75011 Paris'
       },
       {
         url: '../../assets/14.jpeg',
         storechain: 'Auchan',
         country: 'France',
-        province: 'Ile de France'
+        province: 'Ile de France',
+        brand: 'Evian',
+        category: 'Boissons',
+        type: 'Vitrine',
+        event: 'Noel',
+        retailer: 'Auchan',
+        old: '3',
+        address: '71 rue du Faubourg Saint Martin 75011 Paris'
       },
       {
         url: '../../assets/15.jpeg',
         storechain: 'Auchan',
         country: 'France',
-        province: 'Ile de France'
+        province: 'Ile de France',
+        brand: 'Evian',
+        category: 'Boissons',
+        type: 'Vitrine',
+        event: 'Noel',
+        retailer: 'Auchan',
+        old: '3',
+        address: '71 rue du Faubourg Saint Martin 75011 Paris'
       },
       {
         url: '../../assets/16.jpeg',
         storechain: 'Auchan',
         country: 'France',
-        province: 'Ile de France'
+        province: 'Ile de France',
+        brand: 'Evian',
+        category: 'Boissons',
+        type: 'Vitrine',
+        event: 'Noel',
+        retailer: 'Auchan',
+        old: '3',
+        address: '71 rue du Faubourg Saint Martin 75011 Paris'
       },
       {
         url: '../../assets/17.jpeg',
         storechain: 'Auchan',
         country: 'France',
-        province: 'Ile de France'
+        province: 'Ile de France',
+        brand: 'Evian',
+        category: 'Boissons',
+        type: 'Vitrine',
+        event: 'Noel',
+        retailer: 'Auchan',
+        old: '3',
+        address: '71 rue du Faubourg Saint Martin 75011 Paris'
       },
       {
         url: '../../assets/18.jpeg',
         storechain: 'Auchan',
         country: 'France',
-        province: 'Ile de France'
+        province: 'Ile de France',
+        brand: 'Evian',
+        category: 'Boissons',
+        type: 'Vitrine',
+        event: 'Noel',
+        retailer: 'Auchan',
+        old: '3',
+        address: '71 rue du Faubourg Saint Martin 75011 Paris'
       },
       {
         url: '../../assets/19.jpeg',
         storechain: 'Auchan',
         country: 'France',
-        province: 'Ile de France'
+        province: 'Ile de France',
+        brand: 'Evian',
+        category: 'Boissons',
+        type: 'Vitrine',
+        event: 'Noel',
+        retailer: 'Auchan',
+        old: '3',
+        address: '71 rue du Faubourg Saint Martin 75011 Paris'
       },
       {
         url: '../../assets/20.jpeg',
         storechain: 'Auchan',
         country: 'France',
-        province: 'Ile de France'
+        province: 'Ile de France',
+        brand: 'Evian',
+        category: 'Boissons',
+        type: 'Vitrine',
+        event: 'Noel',
+        retailer: 'Auchan',
+        old: '3',
+        address: '71 rue du Faubourg Saint Martin 75011 Paris'
       }
     ];
   }

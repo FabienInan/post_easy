@@ -4,4 +4,11 @@ export class Picture {
   storechain: String;
   country: String;
   province: String;
+  brand: String;
+  category: String;
+  type: String;
+  event: String;
+  retailer: String;
+  old: String;
+  address: String;
 }
