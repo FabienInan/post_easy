@@ -6,16 +6,16 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 import { NgModule } from '@angular/core';
-import { PhotoWallComponent } from './photowall/photowall.component';
-import { PictureCardV2Component } from './picture-card-v2/picture-card-v2.component';
+import { FsduWallComponent } from './fsdu-wall/fsdu-wall.component';
+import { FsduCardComponent } from './fsdu-card/fsdu-card.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ToolbarComponent,
-    PictureCardV2Component,
-    PhotoWallComponent,
+    FsduCardComponent,
+    FsduWallComponent,
     FiltersComponent
   ],
   imports: [
