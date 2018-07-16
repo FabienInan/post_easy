@@ -1,6 +1,6 @@
-# FSDU Web App
+# POST EASY
 
-FSDU Web App
+A project to search best post ( with more likes ) from a specific topic on the social network VK and let the user to repost it.
 
 ## Development server
 
