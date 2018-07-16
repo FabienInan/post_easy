@@ -1,12 +1,9 @@
-<md-toolbar color="primary">
-  <button md-icon-button (click)="sidenav.toggle()">
-      <md-icon>reorder_horizontal</md-icon>
-    </button>
-  <span>FSDU</span>
+<md-toolbar color="primary"style="position: fixed;z-index: 2;width: 100%  !important;">
+  <span>Post Easy</span>
   <span class="spacer"></span>
-  <img class="avatar" src="../../assets/avatar.jpeg" />
-  <span>Bonjour Fabien</span>
-  <button md-icon-button>
+  <img class="avatar" [src]="photoURL" />
+  <span translate>Welcome</span><span>&nbsp; {{userName}}</span>
+  <button md-icon-button (click)="logout()">
       <md-icon>power_settings_new</md-icon>
-    </button>
+  </button>
 </md-toolbar>

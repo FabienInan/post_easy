@@ -9,3 +9,10 @@ body {
   font-family: Roboto, sans-serif;
   background-color: #EEEEEE;
 }
+
+.error-message {
+  color: red;
+  font-size:12px;
+  position: absolute;
+  padding-top:10px;
+}

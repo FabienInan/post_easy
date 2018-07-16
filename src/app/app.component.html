@@ -1,9 +1,2 @@
-<section fxFlexFill fxLayout="column">
-  <toolbar-fsdu [sidenav]="sidenav"></toolbar-fsdu>
-  <md-sidenav-container class="container" fxFlex>
-    <md-sidenav style="background: #FAFAFA;" mode="side" opened="true" #sidenav class="sidenav">
-      <filters></filters>
-    </md-sidenav>
-    <fsdu-wall fxFlexFill></fsdu-wall>
-  </md-sidenav-container>
-</section>
+<toolbar *ngIf="isLoggedIn" ></toolbar>
+<router-outlet></router-outlet>
