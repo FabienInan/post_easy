@@ -7,11 +7,11 @@ export class User {
     this.name = nameUser;
     this.firstName = firstNameUser;
     this.id = idUser;
-    this.groups = groups? groups: new Array<SettingsGroup>();
+    this.groups = groups ? groups : new Array<SettingsGroup>();
   }
 }
 
-export class SettingsGroup{
+export class SettingsGroup {
   idGroup: number;
   publicationFrequency: number;
   publicationFrequencyCustom: number;

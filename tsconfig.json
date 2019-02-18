@@ -1,6 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "importHelpers": true,
     "outDir": "./dist/out-tsc",
     "baseUrl": "src",
     "sourceMap": true,
@@ -18,6 +19,7 @@
     ],
     "types": [
       "hammerjs"
-    ]
+    ],
+    "module": "es2015"
   }
 }
