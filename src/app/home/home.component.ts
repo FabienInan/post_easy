@@ -1,6 +1,6 @@
 import { UserService } from '../shared/services/user.service';
 import { VKService } from '../shared/services/vk.service';
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import * as _ from 'lodash';
 
@@ -8,27 +8,31 @@ import * as _ from 'lodash';
   selector: 'home',
   templateUrl: './home.component.html'
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
   groups: any;
   numberGroup: number;
   currentGroup: any;
-  constructor(private vkService:VKService, private userService:UserService, private translateService: TranslateService){
+
+  constructor(private vkService: VKService, private userService: UserService,
+      private translateService: TranslateService) {
       this.translateService.setDefaultLang('en');
       this.translateService.use('en');
   }
+
   ngOnInit(): void {
-    this.vkService.getGroupsAdmin(this.userService.currentUser.id,(response)=>{
-      let groupIdList = [];
+    this.vkService.getGroupsAdmin(this.userService.currentUser.id, (response) => {
+      const groupIdList = [];
       response.response.shift();
-      _.each(response.response,(group)=>groupIdList.push(group.gid));
-      this.vkService.getGroupDetails(groupIdList, (response)=>{
-        this.numberGroup = response.response.length;
-        this.groups = response.response;
-        this.currentGroup =response.response[0];
+      _.each(response.response, (group) => groupIdList.push(group.gid));
+      this.vkService.getGroupDetails(groupIdList, (responseGroup: any) => {
+        this.numberGroup = responseGroup.response.length;
+        this.groups = responseGroup.response;
+        this.currentGroup = responseGroup.response[0];
       });
     });
    }
-   updateCurrentGroup(event){
+
+   updateCurrentGroup(event) {
      this.currentGroup = event.currentGroup;
    }
 }
