@@ -1,0 +1,4 @@
+<div fxFlexFill fxLayout="row" style="overflow:hidden">
+    <my-vk-groups fxFlex="30" style="margin-top:64px!important" [groups]="groups" (onGroupChanged)="updateCurrentGroup($event)"></my-vk-groups>
+    <admin-group fxFlexOffset="2" fxFlex="70" [currentGroup]="currentGroup" style="height:90%;overflow-y:scroll;margin-top:64px!important"></admin-group>
+</div>

@@ -1,0 +1,78 @@
+<div fxFlexFill fxLayout="column">
+    <h3 *ngIf="currentGroup">Group {{currentGroup.name}}</h3>
+    <md-tab-group style="padding-right:30px" (selectChange)="onLinkClick($event)">
+        <md-tab [label]="'Settings' | translate">
+            <md-card>
+                <form>
+                    <div fxLayout="row">
+                        <md-select fxFlex="40" style="margin-top:10px" placeholder="Choose a publication frequency" [(ngModel)]="settingsGroup && settingsGroup.publicationFrequency"
+                            name="publicationFrequency" (ngModelChange)="emptyCustomValue()">
+                            <md-option [value]="0">Don't publish</md-option>
+                            <md-option [value]="15">Every 15 minutes</md-option>
+                            <md-option [value]="30">Every 30 minutes</md-option>
+                            <md-option [value]="45">Every 45 minutes</md-option>
+                            <md-option [value]="60">Every hour</md-option>
+                            <md-option [value]="120">Every 2 hours</md-option>
+                            <md-option [value]="180">Every 3 hours</md-option>
+                            <md-option [value]="240">Every 4 hours</md-option>
+                            <md-option [value]="300">Every 5 hours</md-option>
+                            <md-option [value]="360">Every 6 hours</md-option>
+                            <md-option [value]="720">Every 12 hours</md-option>
+                            <md-option [value]="1440">Once a day</md-option>
+                        </md-select>
+                        <span fxFlexOffset="2" fxFlex="5" style="margin-top:15px">or</span>
+                        <md-input-container fxFlex="35">
+                            <input mdInput placeholder="Type a customize value (minutes)" min="0" type="number" [(ngModel)]="settingsGroup && settingsGroup.publicationFrequencyCustom" name="publicationFrequencyCustom"
+                                style="text-align:center" (ngModelChange)="emptySelectValue()">
+                        </md-input-container>
+                    </div>
+                    <div fxLayout="row">
+                        <md-input-container fxFlex="20">
+                            <input mdInput placeholder="Add your topics" type="text" [(ngModel)]="newTopic" (ngModelChange)="filterSuggestedTopicList()"
+                                name="newTopic" [mdAutocomplete]="auto">
+                            <span *ngIf="error" class="error-message">{{error}}</span>
+                        </md-input-container>
+                        <md-autocomplete #auto="mdAutocomplete">
+                            <md-option *ngFor="let suggestedTopic of filteredSuggestedTopicList" [value]="suggestedTopic">
+                                {{suggestedTopic}}
+                            </md-option>
+                        </md-autocomplete>
+                        <button fxFlex="5" md-icon-button (click)="addTopic()" style="margin-top:5px">
+                                        <md-icon>add</md-icon>
+                                    </button>
+                        <md-chip-list  *ngIf="settingsGroup" fxFlexOffset="1" fxFlex="75" style="margin-top:10px">
+                            <md-chip *ngFor="let topic of settingsGroup.topicList" style="margin-right:5px">
+                                {{topic}}
+                                <md-icon (click)="removeTopic(topic)" style="font-size:16px;cursor:pointer;right: -15px;height: 8px;width: 8px;">close</md-icon>
+                            </md-chip>
+                        </md-chip-list>
+                    </div>
+                    <div fxLayout="row" fxLayoutAlign="end" (click)="saveSettings()">
+                        <button md-raised-button>Save</button>
+                    </div>
+                </form>
+        </md-card>
+        </md-tab>
+        <md-tab [label]="'Suggested posts' | translate">
+            <md-spinner *ngIf="suggestedPostsLoading" style="margin-left:auto; margin-right:auto"></md-spinner>
+            <div *ngIf="!suggestedPostsLoading" >
+                <md-card *ngFor="let post of suggestedPosts" style="margin-bottom:16px">
+                    <md-input-container *ngIf="post.text!==''" placeholder="Address" style="width: 100%">
+                        <textarea mdInput style="height:100px;">{{post.text}}</textarea>
+                    </md-input-container>
+                    <img style="width:50%; margin-left:auto; margin-right:auto;" *ngIf="post.attachment && post.attachment.photo" [src]="post.attachment.photo.src_big"/>
+                    <div fxLayout="row" fxLayoutAlign="end">
+                        <span style="margin-right:8px">
+                            {{post.likes.count}}
+                            <md-icon>thumb_up</md-icon>
+                        </span>
+                        <span>
+                            {{post.reposts.count}}
+                            <md-icon>share</md-icon>
+                        </span>
+                    </div>
+                </md-card>
+            </div>
+        </md-tab>
+    </md-tab-group>
+</div>

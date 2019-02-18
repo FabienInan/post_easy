@@ -1,25 +1,29 @@
-import { Component, Input} from '@angular/core';
-import { MdSidenav } from '@angular/material';
+import { UserService } from '../shared/services/user.service';
+import { Router } from '@angular/router';
+import { VKService } from '../shared/services/vk.service';
+import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'toolbar-fsdu',
-  template: `
-  <md-toolbar color="primary">
-    <button md-icon-button (click)="sidenav.toggle()">
-      <md-icon>reorder_horizontal</md-icon>
-    </button>
-    <span>FSDU</span>
-    <span class="spacer"></span>
-    <button md-icon-button>
-      <md-icon>account_circle</md-icon>
-    </button>
-    <button md-icon-button>
-      <md-icon>power_settings_new</md-icon>
-    </button>
-  </md-toolbar>
-`
+  selector: 'toolbar',
+  templateUrl: './toolbar.component.html',
+  styleUrls: ['./toolbar.component.css']
 })
 export class ToolbarComponent {
   @Input()
-  sidenav: MdSidenav;
+  userName: string;
+  photoURL: string;
+  constructor(private userService: UserService, private vkService: VKService, private router: Router) {
+    if(this.userService.currentUser){
+      this.userName = this.userService.currentUser.firstName;
+      this.vkService.getProfilePicture(this.userService.currentUser.id,(response)=>{
+        this.photoURL = response.response[0].photo_50;
+      });
+    }
+  }
+
+  logout() {
+    this.vkService.logout((response)=>{
+      this.router.navigate(['']);
+    });
+  }
 }

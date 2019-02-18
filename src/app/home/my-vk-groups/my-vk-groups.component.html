@@ -1,0 +1,14 @@
+<div fxFlexFill fxLayout="column">
+  <h3 md-subheader style="text-align: center">My Vk groups ({{groups && groups.length}})</h3>
+  <div style="padding:0px 18px;height:90%; overflow-y:scroll;">
+    <md-card *ngFor="let group of groups" fxFlex style="margin-bottom:10px;" (click)="selectGroup(group)" >
+      <md-card-title style="border-bottom: lightgray solid 1px;padding-bottom:4px;font-size:18px">
+        <img class="avatar-group" [src]="group.photo_big"/>
+        <span>{{group.name}}</span>
+      </md-card-title>
+      <md-card-content>
+          {{group.description}}
+      </md-card-content>
+    </md-card>
+  </div>
+</div>

@@ -1,35 +1,40 @@
+import { DomSanitizer } from '@angular/platform-browser';
+import { MdIconRegistry } from '@angular/material';
+import { VKService } from './shared/services/vk.service';
+import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  template: `
-  <toolbar-fsdu [sidenav]="sidenav"></toolbar-fsdu>
-  <md-sidenav-container class="container">
-    <md-sidenav mode="side" opened="true" #sidenav class="sidenav">
-      <filters></filters>
-    </md-sidenav>
-    <photo-wall style="height: 1000px; overflow-y: auto"></photo-wall>
-  </md-sidenav-container>
-`,
-  styles: [`
-    .container {
-      width: 100%;
-      height: 100%;
-      border: 1px solid rgba(0, 0, 0, 0.5);
-    }
-    .sidenav {
-      display: flex;
-      width: 20%;
-      justify-content: center;
-      position: fixed;
-    }
-    @media only screen and (max-width: 800px) {
-      .sidenav {
-        display: flex;
-        width: 99%;
-        justify-content: center;
-      }
-    }
-`]
+  templateUrl: './app.component.html'
 })
-export class AppComponent { }
+export class AppComponent {
+  public isLoggedIn: boolean;
+  constructor(public vkService: VKService, private router: Router,private mdIconRegistry: MdIconRegistry, private sanitizer: DomSanitizer) {
+      this.mdIconRegistry.addSvgIconSet(this.sanitizer.bypassSecurityTrustResourceUrl('../assets/icons/mdi.svg'));
+      this.vkService.getLoginStatus(
+        (response) => {
+          if(response.status === 'connected'){
+             this.isLoggedIn = true;
+             this.router.navigate(['home']);
+            }
+            else {
+              this.router.navigate(['']);
+              this.isLoggedIn = false;
+              }
+            }
+      );
+      this.router.events.subscribe(path => {  
+        if(path.constructor.name === 'NavigationStart') {
+          this.vkService.getLoginStatus(
+              (response) => {
+                this.isLoggedIn = false;
+                if(response.status === 'connected'){
+                  this.isLoggedIn = true;
+                }
+              }
+          );
+        }  
+      });
+  }
+}
