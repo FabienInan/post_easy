@@ -11,7 +11,8 @@ import { FormsModule } from '@angular/forms';
 import { Http, HttpModule } from '@angular/http';
 import { NgModule } from '@angular/core';
 import { ToolbarComponent } from './toolbar/toolbar.component';
-import { AngularFireModule } from 'angularfire2';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
 import {RouterModule, Routes} from '@angular/router';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslatePoHttpLoader } from '@biesbjerg/ngx-translate-po-http-loader';
@@ -23,18 +24,25 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatButtonModule} from '@angular/material/button';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 export function createTranslateLoader(httpClient: HttpClient) {
   return new TranslatePoHttpLoader(httpClient, 'assets/i18n', '.po');
 }
 
-
-export const firebaseConfig = {
-  apiKey: 'AIzaSyC1-rtrVp1KbiFOXvsZtS8zFwT5paAr5Qk',
-  authDomain: 'post-easy.firebaseapp.com',
-  databaseURL: 'https://post-easy.firebaseio.com',
-  storageBucket: 'post-easy.appspot.com',
-  messagingSenderId: '4291798914'
+export const environment = {
+  production: false,
+  firebase: {
+    apiKey: 'AIzaSyC1-rtrVp1KbiFOXvsZtS8zFwT5paAr5Qk',
+    authDomain: 'post-easy.firebaseapp.com',
+    databaseURL: 'https://post-easy.firebaseio.com',
+    storageBucket: 'post-easy.appspot.com',
+    messagingSenderId: '4291798914'
+  }
 };
 
 const routes: Routes = [
@@ -52,6 +60,7 @@ const routes: Routes = [
     AdminGroupComponent
   ],
   imports: [
+    BrowserAnimationsModule,
     BrowserModule,
     FormsModule,
     HttpModule,
@@ -62,6 +71,10 @@ const routes: Routes = [
     MatSelectModule,
     MatInputModule,
     MatFormFieldModule,
+    MatAutocompleteModule,
+    MatChipsModule,
+    MatProgressSpinnerModule,
+    MatButtonModule,
     FlexLayoutModule,
     TranslateModule.forRoot({
       loader: {
@@ -70,7 +83,8 @@ const routes: Routes = [
         deps: [Http]
       }
     }),
-    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
     RouterModule.forRoot(routes)
   ],
   providers: [UserService, VKService],

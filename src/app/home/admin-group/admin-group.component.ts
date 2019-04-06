@@ -19,11 +19,11 @@ export class AdminGroupComponent implements OnChanges{
     indexGroup = -1;
     suggestedPosts: any;
     suggestedPostsLoading = false;
-    constructor(public userService: UserService, public vkService: VKService){
+    constructor(public userService: UserService, public vkService: VKService) {
       this.suggestedTopicList = ['Humor', 'Finance', 'Hand spinner'];
       this.filteredSuggestedTopicList = this.suggestedTopicList;
       this.newTopic = '';
-      userService.getUser().then(() => this.createOrUpdateGroup());
+      userService.getUser();
     }
 
     ngOnChanges(changes) {
@@ -41,7 +41,7 @@ export class AdminGroupComponent implements OnChanges{
           this.settingsGroup = this.userService.currentUser.groups[this.indexGroup];
       } else {
           this.settingsGroup = new SettingsGroup();
-          this.settingsGroup.idGroup = this.currentGroup.gid;
+          this.settingsGroup.idGroup = (this.currentGroup || {}).id;
       }
     }
 
@@ -82,12 +82,15 @@ export class AdminGroupComponent implements OnChanges{
     }
 
     saveSettings() {
-      if (this.indexGroup !== -1) {
-        this.userService.currentUser.groups[this.indexGroup] = this.settingsGroup;
+      if (!this.userService.currentUser.groups) {
+        this.userService.currentUser.groups = [];
+      }
+      if (this.userService.currentUser.groups[this.settingsGroup.idGroup] ) {
+        this.userService.currentUser.groups[this.settingsGroup.idGroup] = this.settingsGroup;
       } else {
         this.userService.currentUser.groups.push(this.settingsGroup);
       }
-      this.userService.saveUser(true);
+      this.userService.saveUser();
     }
 
     onLinkClick($event: any) {

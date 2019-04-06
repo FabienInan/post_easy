@@ -1,8 +1,8 @@
 <div fxFlexFill fxLayout="column">
     <h3 *ngIf="currentGroup">Group {{currentGroup.name}}</h3>
-    <mat-tab-group style="padding-right:30px" (selectChange)="onLinkClick($event)">
+    <mat-tab-group style="padding-right:30px" (selectedTabChange)="onLinkClick($event)">
         <mat-tab [label]="'Settings' | translate">
-            <matcard>
+            <mat-card>
                 <form>
                     <div fxLayout="row">
                         <mat-select fxFlex="40" style="margin-top:10px" placeholder="Choose a publication frequency" [(ngModel)]="settingsGroup && settingsGroup.publicationFrequency"
@@ -22,56 +22,56 @@
                         </mat-select>
                         <span fxFlexOffset="2" fxFlex="5" style="margin-top:15px">or</span>
                         <mat-form-field fxFlex="35">
-                            <input mdInput placeholder="Type a customize value (minutes)" min="0" type="number" [(ngModel)]="settingsGroup && settingsGroup.publicationFrequencyCustom" name="publicationFrequencyCustom"
+                            <input matInput placeholder="Type a customize value (minutes)" min="0" type="number" [(ngModel)]="settingsGroup && settingsGroup.publicationFrequencyCustom" name="publicationFrequencyCustom"
                                 style="text-align:center" (ngModelChange)="emptySelectValue()">
                         </mat-form-field>
                     </div>
                     <div fxLayout="row">
                         <mat-form-field fxFlex="20">
-                            <input mdInput placeholder="Add your topics" type="text" [(ngModel)]="newTopic" (ngModelChange)="filterSuggestedTopicList()"
-                                name="newTopic" [mdAutocomplete]="auto">
+                            <input matInput placeholder="Add your topics" type="text" [(ngModel)]="newTopic" (ngModelChange)="filterSuggestedTopicList()"
+                                name="newTopic" [matAutocomplete]="auto">
                             <span *ngIf="error" class="error-message">{{error}}</span>
                         </mat-form-field>
-                        <matautocomplete #auto="mdAutocomplete">
+                        <mat-autocomplete #auto="matAutocomplete">
                             <mat-option *ngFor="let suggestedTopic of filteredSuggestedTopicList" [value]="suggestedTopic">
                                 {{suggestedTopic}}
                             </mat-option>
-                        </matautocomplete>
-                        <button fxFlex="5" maticon-button (click)="addTopic()" style="margin-top:5px">
-                                        <maticon>add</maticon>
-                                    </button>
-                        <matchip-list  *ngIf="settingsGroup" fxFlexOffset="1" fxFlex="75" style="margin-top:10px">
-                            <matchip *ngFor="let topic of settingsGroup.topicList" style="margin-right:5px">
+                        </mat-autocomplete>
+                        <button fxFlex="5" mat-icon-button (click)="addTopic()" style="margin-top:5px">
+                            <mat-icon>add</mat-icon>
+                        </button>
+                        <mat-chip-list *ngIf="settingsGroup" fxFlexOffset="1" fxFlex="75" style="margin-top:10px">
+                            <mat-chip *ngFor="let topic of settingsGroup.topicList" style="margin-right:5px">
                                 {{topic}}
-                                <maticon (click)="removeTopic(topic)" style="font-size:16px;cursor:pointer;right: -15px;height: 8px;width: 8px;">close</maticon>
-                            </matchip>
-                        </matchip-list>
+                                <mat-icon (click)="removeTopic(topic)" style="font-size:16px;cursor:pointer;right: -15px;height: 8px;width: 8px;">close</mat-icon>
+                            </mat-chip>
+                        </mat-chip-list>
                     </div>
                     <div fxLayout="row" fxLayoutAlign="end" (click)="saveSettings()">
-                        <button matraised-button>Save</button>
+                        <button mat-raised-button>Save</button>
                     </div>
                 </form>
-        </matcard>
+        </mat-card>
         </mat-tab>
         <mat-tab [label]="'Suggested posts' | translate">
-            <matspinner *ngIf="suggestedPostsLoading" style="margin-left:auto; margin-right:auto"></matspinner>
+            <mat-spinner *ngIf="suggestedPostsLoading" style="margin-left:auto; margin-right:auto"></mat-spinner>
             <div *ngIf="!suggestedPostsLoading" >
-                <matcard *ngFor="let post of suggestedPosts" style="margin-bottom:16px">
+                <mat-card *ngFor="let post of suggestedPosts" style="margin-bottom:16px">
                     <mat-form-field *ngIf="post.text!==''" placeholder="Address" style="width: 100%">
-                        <textarea mdInput style="height:100px;">{{post.text}}</textarea>
+                        <textarea matInput style="height:100px;">{{post.text}}</textarea>
                     </mat-form-field>
-                    <img style="width:50%; margin-left:auto; margin-right:auto;" *ngIf="post.attachment && post.attachment.photo" [src]="post.attachment.photo.src_big"/>
+                    <img style="width:50%; margin-left:auto; margin-right:auto;" *ngIf="post.attachments && post.attachments[0] && post.attachments[0].photo" [src]="post.attachments[0].photo.sizes[2].url"/>
                     <div fxLayout="row" fxLayoutAlign="end">
                         <span style="margin-right:8px">
                             {{post.likes.count}}
-                            <maticon>thumb_up</maticon>
+                            <mat-icon>thumb_up</mat-icon>
                         </span>
                         <span>
                             {{post.reposts.count}}
-                            <maticon>share</maticon>
+                            <mat-icon>share</mat-icon>
                         </span>
                     </div>
-                </matcard>
+                </mat-card>
             </div>
         </mat-tab>
     </mat-tab-group>

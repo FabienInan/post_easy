@@ -1,40 +1,27 @@
 import { User } from '../models/user.model';
-import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
+import { AngularFireDatabase } from '@angular/fire/database';
 import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class UserService {
-  public userObservable: AngularFireObject<any>;
+  userObservable: Observable<any>;
   public currentUser: User;
 
-  constructor(public af: AngularFireDatabase) {}
+  constructor(private db: AngularFireDatabase) {}
 
   getUser() {
-    return new Promise( (resolve) => {
       this.currentUser = JSON.parse(localStorage.getItem('currentUserPostEasy'));
       const id = this.currentUser ? this.currentUser.id : '';
-        this.userObservable = this.af.object(`users/${id}`);
-        this.userObservable.valueChanges().subscribe((userDb) => {
-            this.currentUser = new User(userDb.name, userDb.firstName, userDb.id, userDb.groups);
-            resolve();
-        });
-    });
+      this.db.object(`users/${id}`).valueChanges().toPromise().then((user: User) => this.currentUser = user);
   }
 
-  saveUser(settings: boolean) {
+  saveUser() {
     const id = this.currentUser.id;
-    this.userObservable = this.af.object(`users/${id}`);
-    const subscription = this.userObservable.valueChanges().subscribe((userDb) => {
-      if (!userDb.$exists() || settings) {
-        this.userObservable.set(this.currentUser);
-        if (subscription) {
-          subscription.unsubscribe();
-        }
-      }
-    });
+    this.db.object(`users/${id}`).set(this.currentUser);
     localStorage.setItem('currentUserPostEasy',
-    JSON.stringify({firstName: this.currentUser.firstName, name: this.currentUser.name, id: this.currentUser.id}));
+      JSON.stringify({firstName: this.currentUser.firstName, name: this.currentUser.name, id: this.currentUser.id}));
   }
 
 }

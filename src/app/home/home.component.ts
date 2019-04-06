@@ -20,15 +20,18 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.currentGroup = {};
+    this.currentGroup.groups = [];
     this.vkService.getGroupsAdmin(this.userService.currentUser.id, (response) => {
-      const groupIdList = [];
-      response.response.shift();
-      _.each(response.response, (group) => groupIdList.push(group.gid));
-      this.vkService.getGroupDetails(groupIdList, (responseGroup: any) => {
-        this.numberGroup = responseGroup.response.length;
-        this.groups = responseGroup.response;
-        this.currentGroup = responseGroup.response[0];
-      });
+      if (response.response.items.length !== 0) {
+        const groupIdList = [];
+        _.each(response.response.items, (group) => groupIdList.push(group.id));
+        this.vkService.getGroupDetails(groupIdList, (responseGroup: any) => {
+          this.numberGroup = responseGroup.response.length;
+          this.groups = responseGroup.response;
+          this.currentGroup = responseGroup.response[0];
+        });
+      }
     });
    }
 

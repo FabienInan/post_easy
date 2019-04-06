@@ -5,7 +5,7 @@ import * as _ from 'lodash';
 export class VKService {
     vk: any;
     isLogin: false;
-    constructor(){
+    constructor() {
         const myWindow: any = window;
         this.vk = myWindow.VK;
     }
@@ -23,39 +23,37 @@ export class VKService {
     }
 
     getProfilePicture(id, callback) {
-        let paramsFields = 'photo_50';
-        return this.vk.Api.call('users.get', {user_ids: id, fields: paramsFields}, callback);
+        const paramsFields = 'photo_50';
+        return this.vk.Api.call('users.get', {user_ids: id, fields: paramsFields, v: '5.92'}, callback);
     }
 
     getGroupsAdmin(userId, callback) {
-        return this.vk.Api.call('groups.get', {user_id: userId, extended:1, filter:['admin', 'editor', 'moder']}, callback);
+        return this.vk.Api.call('groups.get', {user_id: userId, extended: 1, filter: ['admin', 'editor', 'moder'], v: '5.92'}, callback);
     }
 
     getGroupDetails(groupIdList, callback) {
-        return this.vk.Api.call('groups.getById', {group_ids: groupIdList, fields: ['description']}, callback);
+        return this.vk.Api.call('groups.getById', {group_ids: groupIdList, fields: ['description'], v: '5.92'}, callback);
     }
 
     getBestPosts(search) {
-        let postList = [];
-        return new Promise( (resolve, reject)=> { 
-            this.vk.Api.call('groups.search', {q:search, sort: 0, count:10}, (responseGroups)=>{
-                responseGroups.response.shift();
-                let promiseArray = new Array<Promise<any>>();
-                _.each(responseGroups.response, (item)=>{
-                    let promise = new Promise( (resolve, reject)=> {  
-                        this.vk.Api.call('wall.get', {owner_id:-item.gid, count:50},(responsePosts)=>{
-                            if(responsePosts.response){
-                                responsePosts.response.shift();
-                                _.each(responsePosts.response, (item)=>{
+        const postList = [];
+        return new Promise( (resolve) => {
+            this.vk.Api.call('groups.search', {q: search, sort: 0, count: 10, v: '5.92'}, (responseGroups) => {
+                const promiseArray = new Array<Promise<any>>();
+                _.each(responseGroups.response.items, (item) => {
+                    const promise = new Promise((resolve) => {
+                        this.vk.Api.call('wall.get', {owner_id: -item.id, count: 50, v: '5.92'}, (responsePosts) => {
+                            if (responsePosts.response) {
+                                _.each(responsePosts.response.items, (item) => {
                                         postList.push(item);
                                 });
                             }
                             resolve();
-                        }); 
+                        });
                     });
-                    promiseArray.push(promise);        
+                    promiseArray.push(promise);
                 });
-                Promise.all(promiseArray).then(()=> {
+                Promise.all(promiseArray).then(() => {
                     //sort by date then by likes
                     resolve(postList);
                 });

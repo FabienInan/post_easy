@@ -17,9 +17,9 @@ export class LoginComponent {
     this.vkService.login((response) => {
       const firstName = response.session.user.first_name;
       const lastName = response.session.user.last_name;
-      const user = new User(lastName, firstName, response.session.user.id, null);
+      const user = new User(lastName, firstName, response.session.user.id);
       this.userService.currentUser = user;
-      this.userService.saveUser(false);
+      this.userService.saveUser();
       this.router.navigate(['home']);
     });
   }
